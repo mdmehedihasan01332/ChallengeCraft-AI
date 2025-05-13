@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - ChallengeCraft AI</title>
+    <meta name="description" content="Privacy Policy for ChallengeCraft AI - AI-driven challenge platform">
+    
+    <!-- PWA Support -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ChallengeCraft AI">
+    <link rel="apple-touch-icon" href="assets/icons/icon-152x152.png">
+    
+    <!-- Critical CSS Inlining -->
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #06b6d4;
+            --accent-color: #f43f5e;
+            --dark-color: #111827;
+            --light-color: #f9fafb;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            color: var(--dark-color);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        header {
+            background: linear-gradient(90deg, var(--dark-color), #1f2937);
+            color: var(--light-color);
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255,255,255,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.3s;
+        }
+        
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+    
+    <!-- Non-critical CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/modern-ui.css">
+    <link rel="stylesheet" href="css/modern-ui-overrides.css">
+    
+    <!-- Preload Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading indicator -->
+    <div class="loading hidden" id="loadingIndicator">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header section -->
+    <header>
+        <div class="container">
+            <nav class="main-nav">
+                <div class="logo">
+                    <a href="index.html"><h1>ChallengeCraft AI</h1></a>
+                </div>
+                <div class="nav-menu">
+                    <ul>
+                        <li><a href="index.html#challenges">Challenges</a></li>
+                        <li><a href="index.html#progress">Progress</a></li>
+                        <li><a href="index.html#settings">Settings</a></li>
+                    </ul>
+                </div>
+                <!-- Stats display instead of user profile -->
+                <div class="stats-menu">
+                    <div class="stats-item" data-tooltip="Current Level">
+                        <div class="stats-icon">🏆</div>
+                        <span id="levelDisplay">Level 1</span>
+                    </div>
+                    <div class="stats-item" data-tooltip="Current Streak">
+                        <div class="stats-icon">🔥</div>
+                        <span id="streakCount">0</span>
+                    </div>
+                    <button id="leaderboardBtn" class="btn btn-sm btn-primary">Leaderboard</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <section class="page-content">
+            <div class="container">
+                <div class="content-wrapper">
+                    <h1 class="page-title">Privacy Policy</h1>
+                    <p class="last-updated">Last Updated: June 15, 2024</p>
+                    
+                    <div class="privacy-section">
+                        <h2>1. Introduction</h2>
+                        <p>At ChallengeCraft AI, we respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, process, and share your information when you use our service.</p>
+                        <p>Please read this Privacy Policy carefully. If you do not agree with our policies and practices, your choice is not to use our service. By accessing or using ChallengeCraft AI, you agree to this Privacy Policy.</p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2>2. Information We Collect</h2>
+                        <h3>2.1 Information You Provide</h3>
+                        <p>We collect information you provide directly to us when you:</p>
+                        <ul>
+                            <li>Create an account or user profile</li>
+                            <li>Complete challenges and submit solutions</li>
+                            <li>Participate in user surveys or send us feedback</li>
+                            <li>Communicate with us directly</li>
+                        </ul>
+                        
+                        <h3>2.2 Automatically Collected Information</h3>
+                        <p>When you use our service, we automatically collect certain information, including:</p>
+                        <ul>
+                            <li>Usage data (such as challenges attempted, completion rates, and performance metrics)</li>
+                            <li>Device information (such as IP address, browser type, and operating system)</li>
+                            <li>Cookies and similar tracking technologies</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2>3. How We Use Your Information</h2>
+                        <p>We use the information we collect to:</p>
+                        <ul>
+                            <li>Provide, maintain, and improve our services</li>
+                            <li>Create and personalize challenges based on your skill level and preferences</li>
+                            <li>Track your progress and provide performance insights</li>
+                            <li>Send you technical notices, updates, and support messages</li>
+                            <li>Respond to your comments and questions</li>
+                            <li>Develop new features and services</li>
+                            <li>Monitor and analyze trends and usage of our service</li>
+                            <li>Detect, prevent, and address technical issues and fraudulent activities</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2>4. AI Integration and Data Processing</h2>
+                        <p>ChallengeCraft AI leverages the Open Router API to generate challenges and evaluate solutions. When you use our service:</p>
+                        <ul>
+                            <li>Your skill level, preferences, and performance metrics may be shared with the AI system to generate appropriate challenges</li>
+                            <li>Your challenge solutions are processed by AI for evaluation</li>
+                            <li>We ensure that personally identifiable information is not unnecessarily shared with third-party AI services</li>
+                        </ul>
+                        <p>We have implemented measures to ensure the security and confidentiality of the data processed by AI systems. However, you should be aware that the content you submit for challenges may be processed by external AI services.</p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2>5. Data Sharing and Disclosure</h2>
+                        <p>We do not sell your personal information. We may share your information in the following circumstances:</p>
+                        <ul>
+                            <li>With service providers who perform services on our behalf (such as hosting providers, analytics services, and API providers)</li>
+                            <li>To comply with applicable laws, regulations, or legal processes</li>
+                            <li>To protect the rights, property, and safety of ChallengeCraft AI, our users, or the public</li>
+                            <li>In connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition</li>
+                            <li>With your consent or at your direction</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2>6. Data Security</h2>
+                        <p>We take reasonable measures to help protect your personal information from loss, theft, misuse, unauthorized access, disclosure, alteration, and destruction.</p>
+                        <p>However, no system is completely secure, and we cannot guarantee the absolute security of your information. You are responsible for maintaining the secrecy of your unique password and account information.</p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2>7. Your Rights and Choices</h2>
+                        <p>Depending on your location, you may have certain rights regarding your personal information, including:</p>
+                        <ul>
+                            <li>Accessing, correcting, or deleting your personal information</li>
+                            <li>Withdrawing your consent to the processing of your data</li>
+                            <li>Requesting restriction of processing or objecting to processing</li>
+                            <li>Data portability</li>
+                            <li>Lodging a complaint with a supervisory authority</li>
+                        </ul>
+                        <p>To exercise these rights, please contact us using the information provided at the end of this policy.</p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2>8. Cookies and Tracking Technologies</h2>
+                        <p>We use cookies and similar tracking technologies to track activity on our service and hold certain information. Cookies are files with a small amount of data that may include an anonymous unique identifier.</p>
+                        <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our service.</p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2>9. Children's Privacy</h2>
+                        <p>Our service is not directed to children under the age of 13. We do not knowingly collect personally identifiable information from children under 13. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us so that we can take necessary actions.</p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2>10. Changes to This Privacy Policy</h2>
+                        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+                        <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+                    </div>
+                    
+                    <div class="privacy-section">
+                        <h2>11. Contact Us</h2>
+                        <p>If you have any questions about this Privacy Policy, please <a href="contact.html">contact us</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 ChallengeCraft AI. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification system -->
+    <div class="notifications" id="notificationContainer"></div>
+
+    <!-- Modal container -->
+    <div class="modal-container" id="modalContainer"></div>
+
+    <!-- Scripts -->
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/utils/storage.js"></script>
+    <script src="js/components/notification.js"></script>
+    <script src="js/components/modal.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 

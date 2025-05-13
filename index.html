@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChallengeCraft AI</title>
+    <meta name="description" content="AI-driven challenge platform for creative problem solving">
+    
+    <!-- PWA Support -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ChallengeCraft AI">
+    <link rel="apple-touch-icon" href="assets/icons/icon-152x152.png">
+    
+    <!-- Critical CSS Inlining -->
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #06b6d4;
+            --accent-color: #f43f5e;
+            --dark-color: #111827;
+            --light-color: #f9fafb;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            color: var(--dark-color);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        header {
+            background: linear-gradient(90deg, var(--dark-color), #1f2937);
+            color: var(--light-color);
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255,255,255,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.3s;
+        }
+        
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+    
+    <!-- Non-critical CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/modern-ui.css">
+    <link rel="stylesheet" href="css/modern-ui-overrides.css">
+    
+    <!-- Preload Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading indicator -->
+    <div class="loading" id="loadingIndicator">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header section -->
+    <header>
+        <div class="container">
+            <nav class="main-nav">
+                <div class="logo">
+                    <a href="index.html"><h1>ChallengeCraft AI</h1></a>
+                </div>
+                <div class="nav-menu">
+                    <ul>
+                        <li><a href="#challenges">Challenges</a></li>
+                        <li><a href="#progress">Progress</a></li>
+                        <li><a href="#settings">Settings</a></li>
+                    </ul>
+                </div>
+                <!-- Stats display instead of user profile -->
+                <div class="stats-menu">
+                    <div class="stats-item" data-tooltip="Current Level">
+                        <div class="stats-icon">🏆</div>
+                        <span id="levelDisplay">Level 1</span>
+                    </div>
+                    <div class="stats-item" data-tooltip="Current Streak">
+                        <div class="stats-icon">🔥</div>
+                        <span id="streakCount">0</span>
+                    </div>
+                    <button id="leaderboardBtn" class="btn btn-sm btn-primary">Leaderboard</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Master Challenges With AI</h2>
+                    <p>Dynamic, personalized challenges to boost your skills and creativity</p>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary" id="startChallenge">Start a Challenge</button>
+                        <button class="btn btn-secondary" id="dailyChallengeBtn">Daily Challenge</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="challenges" class="challenges-section">
+            <div class="container">
+                <h2>Available Challenges</h2>
+                <div class="challenge-filters">
+                    <select id="difficultyFilter">
+                        <option value="all">All Difficulties</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                        <option value="expert">Expert</option>
+                    </select>
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <option value="coding">Coding</option>
+                        <option value="creativity">Creativity</option>
+                        <option value="problem-solving">Problem Solving</option>
+                        <option value="design">Design</option>
+                        <option value="real-life">Real Life</option>
+                        <option value="book-challenge">Book Challenge</option>
+                        <option value="gameplay">Gameplay</option>
+                        <option value="language-learning">Language Learning</option>
+                        <option value="fitness">Fitness</option>
+                        <option value="art">Art</option>
+                        <option value="writing">Writing</option>
+                        <option value="music">Music</option>
+                        <option value="cooking">Cooking</option>
+                        <option value="trivia">Trivia</option>
+                        <option value="mindfulness">Mindfulness</option>
+                        <option value="productivity">Productivity</option>
+                    </select>
+                </div>
+                <div class="challenge-grid" id="challengeGrid">
+                    <!-- Challenge cards will be dynamically inserted here -->
+                    <div class="challenge-card placeholder">
+                        <div class="challenge-placeholder-content"></div>
+                    </div>
+                    <div class="challenge-card placeholder">
+                        <div class="challenge-placeholder-content"></div>
+                    </div>
+                    <div class="challenge-card placeholder">
+                        <div class="challenge-placeholder-content"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="active-challenge" class="active-challenge hidden">
+            <div class="container">
+                <div class="challenge-header">
+                    <h2 id="challengeTitle">Challenge Title</h2>
+                    <div class="challenge-meta">
+                        <span class="difficulty" id="challengeDifficulty">Intermediate</span>
+                        <span class="category" id="challengeCategory">Problem Solving</span>
+                        <span class="timer" id="challengeTimer">00:00</span>
+                    </div>
+                </div>
+                <div class="challenge-description" id="challengeDescription">
+                    <!-- Challenge description will go here -->
+                </div>
+                <div class="challenge-interaction">
+                    <div class="challenge-input">
+                        <textarea id="challengeInput" placeholder="Enter your solution here..."></textarea>
+                    </div>
+                    <div class="challenge-actions">
+                        <button class="btn btn-secondary" id="hintButton">Get Hint</button>
+                        <button class="btn btn-primary" id="submitSolution">Submit Solution</button>
+                    </div>
+                </div>
+                <div class="challenge-feedback hidden" id="challengeFeedback">
+                    <!-- Feedback will be displayed here -->
+                </div>
+                <canvas id="challengeCanvas" class="challenge-canvas"></canvas>
+            </div>
+        </section>
+
+        <section id="progress" class="progress-section">
+            <div class="container">
+                <h2>Your Progress</h2>
+                <div class="progress-summary">
+                    <div class="progress-card">
+                        <h3>Challenges Completed</h3>
+                        <div class="progress-value" id="completedChallenges">0</div>
+                    </div>
+                    <div class="progress-card">
+                        <h3>Success Rate</h3>
+                        <div class="progress-value" id="successRate">0%</div>
+                    </div>
+                    <div class="progress-card">
+                        <h3>Current Streak</h3>
+                        <div class="progress-value" id="currentStreak">0</div>
+                    </div>
+                </div>
+                <div class="progress-chart">
+                    <canvas id="progressChart"></canvas>
+                </div>
+                <div class="recent-activity">
+                    <h3>Recent Activity</h3>
+                    <ul class="activity-list" id="activityList">
+                        <!-- Activity items will be dynamically inserted here -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 ChallengeCraft AI. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification system -->
+    <div class="notifications" id="notificationContainer"></div>
+
+    <!-- Modal container -->
+    <div class="modal-container" id="modalContainer"></div>
+
+    <!-- Scripts -->
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/utils/storage.js"></script>
+    <script src="js/api/openRouter.js"></script>
+    <script src="js/components/challenge.js"></script>
+    <script src="js/components/notification.js"></script>
+    <script src="js/components/modal.js"></script>
+    <script src="js/components/progressTracker.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- PWA Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html> 

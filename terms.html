@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - ChallengeCraft AI</title>
+    <meta name="description" content="Terms of Service for ChallengeCraft AI - AI-driven challenge platform">
+    
+    <!-- PWA Support -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ChallengeCraft AI">
+    <link rel="apple-touch-icon" href="assets/icons/icon-152x152.png">
+    
+    <!-- Critical CSS Inlining -->
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #06b6d4;
+            --accent-color: #f43f5e;
+            --dark-color: #111827;
+            --light-color: #f9fafb;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            color: var(--dark-color);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        header {
+            background: linear-gradient(90deg, var(--dark-color), #1f2937);
+            color: var(--light-color);
+            padding: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255,255,255,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.3s;
+        }
+        
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+    
+    <!-- Non-critical CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/modern-ui.css">
+    <link rel="stylesheet" href="css/modern-ui-overrides.css">
+    
+    <!-- Preload Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading indicator -->
+    <div class="loading hidden" id="loadingIndicator">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header section -->
+    <header>
+        <div class="container">
+            <nav class="main-nav">
+                <div class="logo">
+                    <a href="index.html"><h1>ChallengeCraft AI</h1></a>
+                </div>
+                <div class="nav-menu">
+                    <ul>
+                        <li><a href="index.html#challenges">Challenges</a></li>
+                        <li><a href="index.html#progress">Progress</a></li>
+                        <li><a href="index.html#settings">Settings</a></li>
+                    </ul>
+                </div>
+                <!-- Stats display instead of user profile -->
+                <div class="stats-menu">
+                    <div class="stats-item" data-tooltip="Current Level">
+                        <div class="stats-icon">🏆</div>
+                        <span id="levelDisplay">Level 1</span>
+                    </div>
+                    <div class="stats-item" data-tooltip="Current Streak">
+                        <div class="stats-icon">🔥</div>
+                        <span id="streakCount">0</span>
+                    </div>
+                    <button id="leaderboardBtn" class="btn btn-sm btn-primary">Leaderboard</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main content -->
+    <main>
+        <section class="page-content">
+            <div class="container">
+                <div class="content-wrapper">
+                    <h1 class="page-title">Terms of Service</h1>
+                    <p class="last-updated">Last Updated: June 15, 2024</p>
+                    
+                    <div class="terms-section">
+                        <h2>1. Acceptance of Terms</h2>
+                        <p>Welcome to ChallengeCraft AI. By accessing or using our service, you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of the terms, you may not access the service.</p>
+                    </div>
+                    
+                    <div class="terms-section">
+                        <h2>2. Description of Service</h2>
+                        <p>ChallengeCraft AI provides an AI-driven challenge platform that generates personalized challenges leveraging the Open Router API. Our service includes interactive challenges, progress tracking, and performance analysis features.</p>
+                    </div>
+                    
+                    <div class="terms-section">
+                        <h2>3. User Accounts</h2>
+                        <p>When you create an account with us, you must provide information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account.</p>
+                        <p>You are responsible for safeguarding the password that you use to access the service and for any activities or actions under your password.</p>
+                        <p>You agree not to disclose your password to any third party. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.</p>
+                    </div>
+                    
+                    <div class="terms-section">
+                        <h2>4. Intellectual Property</h2>
+                        <p>The service and its original content, features, and functionality are and will remain the exclusive property of ChallengeCraft AI and its licensors. The service is protected by copyright, trademark, and other laws.</p>
+                        <p>Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of ChallengeCraft AI.</p>
+                    </div>
+                    
+                    <div class="terms-section">
+                        <h2>5. User Content</h2>
+                        <p>You retain ownership of any intellectual property rights that you hold in content you submit to ChallengeCraft AI.</p>
+                        <p>When you upload content to our platform, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, modify, adapt, publish, translate, and distribute your content in any existing or future media formats.</p>
+                        <p>You represent and warrant that: (i) the content is yours or you have the right to use it and grant us the rights and license as provided in these Terms, and (ii) that the posting of your content does not violate the privacy rights, publicity rights, copyrights, contract rights or any other rights of any person or entity.</p>
+                    </div>
+                    
+                    <div class="terms-section">
+                        <h2>6. Prohibited Uses</h2>
+                        <p>You agree not to use ChallengeCraft AI for any purpose that is unlawful or prohibited by these Terms, or to solicit the performance of any illegal activity.</p>
+                        <p>Specifically, you agree not to:</p>
+                        <ul>
+                            <li>Use the service in any way that could disable, overburden, damage, or impair the site or interfere with any other party's use of the service</li>
+                            <li>Attempt to gain unauthorized access to secured portions of the platform</li>
+                            <li>Use the service to generate challenges that may cause harm or promote illegal activities</li>
+                            <li>Use the service to collect or harvest any personally identifiable information</li>
+                            <li>Impersonate or attempt to impersonate our company, an employee, another user, or any other person or entity</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="terms-section">
+                        <h2>7. Third-Party Services</h2>
+                        <p>Our service may contain links to third-party websites or services that are not owned or controlled by ChallengeCraft AI.</p>
+                        <p>ChallengeCraft AI has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You further acknowledge and agree that ChallengeCraft AI shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods, or services available on or through any such websites or services.</p>
+                    </div>
+                    
+                    <div class="terms-section">
+                        <h2>8. Limitation of Liability</h2>
+                        <p>In no event shall ChallengeCraft AI, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the service.</p>
+                    </div>
+                    
+                    <div class="terms-section">
+                        <h2>9. Changes to Terms</h2>
+                        <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
+                        <p>By continuing to access or use our service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the service.</p>
+                    </div>
+                    
+                    <div class="terms-section">
+                        <h2>10. Contact Us</h2>
+                        <p>If you have any questions about these Terms, please <a href="contact.html">contact us</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 ChallengeCraft AI. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification system -->
+    <div class="notifications" id="notificationContainer"></div>
+
+    <!-- Modal container -->
+    <div class="modal-container" id="modalContainer"></div>
+
+    <!-- Scripts -->
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/utils/storage.js"></script>
+    <script src="js/components/notification.js"></script>
+    <script src="js/components/modal.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
